@@ -3,13 +3,13 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function NftCard(props) {
-  const [loading, setLoading] = useState(false);
+  const [adding, setAdding] = useState(false);
   const { user, dispatch } = useAuthContext();
   const { _id, name, price, image, artist, category } = props.nft;
   const nav = useNavigate();
   const addToCart = async () => {
     try {
-      setLoading(true);
+      setAdding(true);
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${_id}/addToCart`,
         {
@@ -35,7 +35,7 @@ function NftCard(props) {
       toast.error("Something went wrong");
       console.log(error);
     } finally {
-      setLoading(false);
+      setAdding(false);
     }
   };
 
@@ -63,9 +63,9 @@ function NftCard(props) {
             <button
               className="btn-box-primary"
               onClick={addToCart}
-              disabled={setLoading}
+              disabled={adding}
             >
-              {loading ? "Adding..." : "Add to Cart"}
+              {adding ? "Adding..." : "Add to Cart"}
             </button>
           )}
         </div>
