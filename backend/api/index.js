@@ -23,7 +23,10 @@ app.use(logger);
 app.get("/", (req, res) => {
   res.send("Express on Vercel");
 });
-
+const userRoutes = require("../routes/userRoutes");
+const nftRoutes = require("../routes/nftRoutes");
+app.use("/api/users", userRoutes);
+app.use("/api/nfts", nftRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
