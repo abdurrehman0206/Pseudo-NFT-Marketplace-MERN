@@ -171,10 +171,28 @@ const getUsers = async (req, res) => {
     });
   }
 };
-
+const getArtist = async (req, res) => {
+  try {
+    const artist = await User.findById(req.params.id).select(
+      "username image -_id "
+    );
+    return res.status(200).json({
+      success: true,
+      message: "Artist fetched successfully",
+      data: artist,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+      error: "Internal server error",
+    });
+  }
+};
 module.exports = {
   signup,
   login,
   getUsers,
+  getArtist,
   verifyToken,
 };

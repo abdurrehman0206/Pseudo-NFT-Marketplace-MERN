@@ -60,19 +60,29 @@
     display: block;
   }
   .nav-user-info {
+    background-color: #ea117a6c;
+    border-radius: 20px;
+
+    padding: $xs;
     @include flex-layout(row, center, center);
     gap: $sm;
+
     img {
       width: 30px;
       height: 30px;
       border-radius: 50%;
       object-fit: cover;
     }
+    p {
+      margin: 0;
+      line-height: 0;
+      font-weight: bold;
+    }
     span {
       @include flex-layout(row, center, center);
 
       border-radius: 25px;
-      background-color: #ea117a6c;
+
       height: 100%;
       padding: $xs $md;
       gap: $sm;

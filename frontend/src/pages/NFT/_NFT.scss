@@ -1,0 +1,67 @@
+.nft {
+  @include flex-layout(row, center, flex-start);
+  border: 1px solid red;
+  @include device(mobile) {
+    flex-direction: column;
+  }
+}
+.nft-left {
+  position: relative;
+  padding: $sm;
+
+  overflow: hidden;
+  flex-basis: 50%;
+  border: 1px solid red;
+  img {
+    border-radius: 10px;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 0;
+  }
+  .triangle {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    clip-path: polygon(100% 100%, 0 0, 100% 0%);
+    border-top-right-radius: 5px;
+    right: 8px;
+  }
+}
+.nft-right {
+  padding: $sm;
+  border: radius 10px;
+  flex-basis: 50%;
+  border: 1px solid red;
+  @include flex-layout(column, center, flex-start);
+  gap: $sm;
+}
+.nft-right-header {
+  width: 100%;
+  border: 1px solid red;
+  @include flex-layout(row, space-between, center);
+  h1 {
+    font-size: $xxl;
+  }
+  .nft-right-header-info {
+    @include flex-layout(row, center, center);
+    gap: $xs;
+    img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      object-fit: cover;
+      //   object-position: 50% 0;
+    }
+    p {
+      font-size: $lg;
+    }
+  }
+}
+.nft-right-body {
+  p {
+    font-weight: 300;
+  }
+}

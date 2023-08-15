@@ -53,7 +53,12 @@ function NftCard(props) {
           {/* <div className="nft-card-description">Desc</div> */}
         </div>
         <div className="nft-card-actions">
-          <button className="btn-box-outline">Details</button>
+          <button
+            className="btn-box-outline"
+            onClick={() => nav(`/collections/${_id}`)}
+          >
+            Details
+          </button>
           {user?.shoppingCart.find((nftId) => nftId === _id) ? (
             <button
               className="btn-box-outline in-cart"

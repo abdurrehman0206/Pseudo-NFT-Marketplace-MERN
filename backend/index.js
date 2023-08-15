@@ -7,7 +7,7 @@ const serverless = require("serverless-http");
 const corsOpts = {
   origin: [
     "http://localhost:3000",
-    "http://192.168.100.29:3000",
+    "http://192.168.100.34:3000",
     ["https://risidio-nft.vercel.app"],
   ],
   credentials: true,

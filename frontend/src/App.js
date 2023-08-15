@@ -7,6 +7,7 @@ import Signup from "./pages/Signup/Signup";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Cart from "./pages/Cart/Cart";
 import Collections from "./pages/Collections/Collections";
+import NFT from "./pages/NFT/NFT";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -19,7 +20,15 @@ function App() {
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
             />
-            <Route path="/collections" element={<Collections />} />
+            <Route
+              path="/collections"
+              element={user ? <Collections /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/collections/:nftId"
+              element={user ? <NFT /> : <Navigate to="/login" />}
+            />
+
             <Route
               path="/cart"
               element={user ? <Cart /> : <Navigate to="/login" />}
