@@ -5,7 +5,11 @@ const cors = require("cors");
 const app = express();
 const serverless = require("serverless-http");
 const corsOpts = {
-  origin: ["http://localhost:3000", "http://192.168.100.29:3000"],
+  origin: [
+    "http://localhost:3000",
+    "http://192.168.100.29:3000",
+    ["https://risidio-nft.vercel.app"],
+  ],
   credentials: true,
   methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
