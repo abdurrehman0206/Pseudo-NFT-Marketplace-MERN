@@ -2,7 +2,7 @@
   //   border: 1px solid red;
 }
 .pane {
-  //   border: 1px solid blue;
+  // border: 1px solid blue;
   padding: $md;
   display: flex;
   flex-direction: column;
@@ -39,4 +39,10 @@
   @include flex-layout(row, center, center);
   flex-wrap: wrap;
   gap: $md;
+  overflow-y: scroll;
+  max-height: calc(100vh - 175px);
+  min-height: 370px;
+  @include device(mobile) {
+    max-height: calc(100vh - 260px);
+  }
 }

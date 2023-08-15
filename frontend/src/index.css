@@ -331,6 +331,8 @@ body {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: 50% 0%;
+     object-position: 50% 0%;
 }
 
 .nft-card-actions {
@@ -352,6 +354,7 @@ body {
   border-radius: 5px;
   padding: 0.25rem 0.5rem;
   color: #5b8fb9;
+  font-weight: 500;
 }
 
 .nft-card-category {
@@ -360,6 +363,10 @@ body {
 
 .nft-card-price {
   right: 0.5rem;
+}
+
+.nft-card-name {
+  font-weight: 700;
 }
 
 .in-cart {
@@ -450,6 +457,14 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  overflow-y: scroll;
+  max-height: calc(100vh - 175px);
+  min-height: 370px;
+}
+@media (max-width: 767px) {
+  .pane-body {
+    max-height: calc(100vh - 260px);
+  }
 }
 
 .home-container {
@@ -689,6 +704,15 @@ body {
   align-items: center;
   text-align: center;
   gap: 1rem;
+}
+
+.collections {
+  position: relative;
+}
+
+.collections-header h1 {
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .App-container {

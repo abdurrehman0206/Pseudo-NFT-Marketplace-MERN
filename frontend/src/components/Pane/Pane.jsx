@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import NftCard from "../NftCard/NftCard";
 function Pane(props) {
-  const { title, navTo, nfts } = props;
+  const { title, navTo, nfts, hasButton } = props;
+  console.log("🚀 ~ file: Pane.jsx:6 ~ Pane ~ hasButton:", hasButton);
 
   return (
     <div className="pane-container">
@@ -11,9 +12,11 @@ function Pane(props) {
           <div className="pane-header-title">
             <h1>{title}</h1>
           </div>
-          <div className="pane-header-actions">
-            <NavLink to={`/${navTo}`} className="btn-primary"></NavLink>
-          </div>
+          {hasButton && (
+            <div className="pane-header-actions">
+              <NavLink to={`/${navTo}`} className="btn-primary"></NavLink>
+            </div>
+          )}
         </div>
         <div className="pane-body">
           {nfts?.map((nft) => (

@@ -16,7 +16,7 @@ function Hero() {
           </h4>
         </div>
         <div className="hero-bottom">
-          <NavLink to="/" className="btn-box-primary">
+          <NavLink to="/collections" className="btn-box-primary">
             Explore
             <span></span>
           </NavLink>

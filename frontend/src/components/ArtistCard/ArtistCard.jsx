@@ -2,8 +2,10 @@ import React from 'react';
 
 function ArtistCard() {
     return (
-        <div>
-            
+        <div className='artist-card-container'>
+            <div className="artist-card">
+                
+            </div>
         </div>
     );
 }

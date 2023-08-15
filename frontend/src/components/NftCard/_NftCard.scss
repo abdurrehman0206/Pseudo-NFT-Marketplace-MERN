@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 50% 0%;
   }
 }
 
@@ -43,6 +44,7 @@
   border-radius: 5px;
   padding: $xs $sm;
   color: $theme-accent2;
+  font-weight: 500;
 }
 .nft-card-category {
   left: $sm;
@@ -50,6 +52,9 @@
 
 .nft-card-price {
   right: $sm;
+}
+.nft-card-name{
+  font-weight: 700;
 }
 .in-cart {
   color: $theme-accent3;

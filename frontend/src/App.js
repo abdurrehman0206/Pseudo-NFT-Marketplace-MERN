@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Cart from "./pages/Cart/Cart";
+import Collections from "./pages/Collections/Collections";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -18,6 +19,7 @@ function App() {
               path="/"
               element={user ? <Home /> : <Navigate to="/login" />}
             />
+            <Route path="/collections" element={<Collections />} />
             <Route
               path="/cart"
               element={user ? <Cart /> : <Navigate to="/login" />}
