@@ -1,0 +1,24 @@
+@import "./partials/imports";
+@import "./components/Navbar/Navbar";
+@import "./components/NftCard/NftCard";
+@import "./pages/Home/Home";
+@import "./pages/Login/Login";
+@import "./pages/Cart/Cart";
+.App-container {
+  height: 100%;
+  width: 100%;
+
+  .App {
+    z-index: 1;
+    width: 80%;
+    height: 100%;
+    max-width: 1200px;
+
+    padding: $lg;
+    margin: 0 auto;
+    // box-shadow: 0px 0px 100px 10px #ea117a;
+    @include device(mobile) {
+      width: 100%;
+    }
+  }
+}

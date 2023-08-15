@@ -1,0 +1,8 @@
+@import "../../components/Hero/Hero";
+@import "../../components/Pane/Pane";
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: $lg;
+}

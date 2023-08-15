@@ -1,0 +1,137 @@
+.c-ac1 {
+  color: $theme-accent1;
+}
+.c-ac2 {
+  color: $theme-accent2;
+}
+.c-ac3 {
+  color: $theme-accent3;
+}
+
+.bg-ac1 {
+  background-color: $theme-accent1;
+}
+.bg-ac2 {
+  background-color: $theme-accent2;
+}
+.bg-ac3 {
+  background-color: $theme-accent3;
+}
+.border-ac1 {
+  border: 1px solid $theme-accent1;
+}
+
+.border-ac2 {
+  border: 1px solid $theme-accent2;
+}
+.border-ac3 {
+  border: 1px solid $theme-accent3;
+}
+.btn-primary {
+  color: $text-color ;
+  background-color: $theme-accent1;
+  padding: $sm $lg;
+  font-weight: 700;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in;
+  // &:hover {
+  //   transition: all 0.2s ease-out;
+  //   background-color: transparent;
+  //   border: 1px solid $theme-accent1;
+  //   color: $theme-accent1;
+  // }
+
+  @media (hover: none) {
+    &:active {
+      transition: all 0.2s ease-out;
+      background-color: transparent;
+      border: 1px solid $theme-accent1;
+      color: $theme-accent1;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      transition: all 0.2s ease-out;
+      background-color: transparent;
+      border: 1px solid $theme-accent1;
+      color: $theme-accent1;
+    }
+  }
+}
+.btn-outline {
+  padding: $sm $lg;
+  font-weight: 700;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid $theme-accent1;
+  transition: all 0.2s ease-in;
+  color: $theme-accent1;
+
+  @media (hover: none) {
+    &:active {
+      border: 1px solid transparent;
+      transition: all 0.2s ease-out;
+      color: $text-color;
+      background-color: $theme-accent1;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      border: 1px solid transparent;
+      transition: all 0.2s ease-out;
+      color: $text-color;
+      background-color: $theme-accent1;
+    }
+  }
+}
+.btn-box-primary {
+  color: $text-color;
+  background-color: $theme-accent1;
+  padding: $sm $lg;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in;
+  @media (hover: none) {
+    &:active {
+      transition: all 0.2s ease-out;
+      background-color: transparent;
+      border: 1px solid $theme-accent1;
+      color: $theme-accent1;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      transition: all 0.2s ease-out;
+      background-color: transparent;
+      border: 1px solid $theme-accent1;
+      color: $theme-accent1;
+    }
+  }
+}
+.btn-box-outline {
+  padding: $sm $lg;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid $theme-accent1;
+  transition: all 0.2s ease-in;
+  color: $theme-accent1;
+  @media (hover: none) {
+    &:active {
+      border: 1px solid transparent;
+      transition: all 0.2s ease-out;
+      color: $text-color;
+      background-color: $theme-accent1;
+    }
+  }
+  @media (hover: hover) {
+    &:hover {
+      border: 1px solid transparent;
+      transition: all 0.2s ease-out;
+      color: $text-color;
+      background-color: $theme-accent1;
+    }
+  }
+}

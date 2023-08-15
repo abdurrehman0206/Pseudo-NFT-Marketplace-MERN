@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bricolage Grotesque", sans-serif;
+
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background: none;
+}
+body {
+  // box-shadow: inset 0px 0px 100px #ea117a8c;
+  background-color: #000000;
+  color: #dde6ed;
+}
+::-webkit-scrollbar {
+  display: none;
+  // background: transparent;
+  // height: 5px;
+  // width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  // background: #ea117a;
+  // border-radius: 10px;
+}
+

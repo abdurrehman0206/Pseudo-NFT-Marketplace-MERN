@@ -1,0 +1,147 @@
+.cart-container {
+}
+.cart {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  @include flex-layout(row, space-between);
+  @include flex-layout(column, center, center);
+
+  @include device(mobile) {
+    width: 100%;
+  }
+  gap: $sm;
+  // border: 1px solid $theme-accent1;
+  border-radius: $sm;
+}
+.cart-content,
+.cart-total {
+  padding: $md;
+  display: flex;
+  flex-direction: column;
+  gap: $md;
+  width: 100%;
+
+  @include device(mobile) {
+    width: 100%;
+  }
+  border-radius: 10px;
+}
+.cart-content {
+  // background-color: #ea117a28;
+  flex-basis: 60%;
+  // border: 2px solid $theme-accent1;
+}
+.cart-header {
+  h1 {
+    font-size: $xl;
+  }
+}
+.cart-items {
+  @include flex-layout(column, center, flex-start);
+  gap: $lg;
+}
+
+.cart-item {
+  padding: $xs;
+  // background-color: #0a0a0a;
+  position: relative;
+  border-radius: 5px;
+  width: 100%;
+  @include flex-layout(row, flex-start, center);
+  gap: $md;
+
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+  }
+
+  background-color: #0a0a0a;
+  box-shadow: 0px 0px 1px 1px #5b8fb936;
+  &:hover {
+    box-shadow: 0px 0px 1px 1px #5b8fb962;
+  }
+  .cart-item-remove {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}
+.cart-item-actions {
+  position: absolute;
+  right: $xs;
+  @include flex-layout(row, center, center);
+  gap: $md;
+  button {
+    @include flex-layout(row, center, center);
+
+    border-radius: 50%;
+    .remove-btn {
+      font-size: $xxl;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.cart-total {
+  flex-basis: 40%;
+  // background-color: #ea117a28;
+  @include flex-layout(column, space-between, flex-start);
+  gap: $sm;
+
+  span {
+    text-align: center;
+  }
+  .cart-total-header {
+    h1 {
+      font-size: $xl;
+    }
+  }
+  .cart-total-items {
+    width: 100%;
+    @include flex-layout(row, space-between, center);
+    p {
+      font-size: $lg;
+    }
+    &.total {
+      font-weight: 600;
+      &.due {
+        margin-top: $md;
+      }
+    }
+    input {
+      height: 100%;
+      border-radius: 5px;
+      // border: 1px solid $theme-accent1;
+      color: $text-color !important;
+      padding: $sm;
+      width: 80%;
+      background-color: #ea117a28;
+    }
+  }
+  button {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+  .order-divider {
+    // text-align: start;
+    padding: $sm;
+    width: 100%;
+    border-bottom: 1px solid $theme-accent1;
+    font-weight: 600;
+    &.final {
+      padding: 0;
+    }
+  }
+}
+
+.cart-empty {
+  @include flex-layout(column, center, center);
+  text-align: center;
+  gap: $lg;
+}

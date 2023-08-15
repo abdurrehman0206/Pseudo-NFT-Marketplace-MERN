@@ -1,0 +1,42 @@
+.pane-container {
+  //   border: 1px solid red;
+}
+.pane {
+  //   border: 1px solid blue;
+  padding: $md;
+  display: flex;
+  flex-direction: column;
+  gap: $md;
+}
+
+.pane-header {
+  //   border: 1px solid green;
+  @include flex-layout(row, space-between, center);
+  .pane-header-title {
+    h1 {
+      font-size: $xl;
+    }
+  }
+  .pane-header-actions {
+    a {
+      display: block;
+      &::after {
+        content: "View All →";
+      }
+      @include device(mobile) {
+        &::after {
+          content: "⪼";
+        }
+      }
+    }
+  }
+}
+.pane-body {
+  padding: $xs;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  //   border: 1px solid green;
+  @include flex-layout(row, center, center);
+  flex-wrap: wrap;
+  gap: $md;
+}
