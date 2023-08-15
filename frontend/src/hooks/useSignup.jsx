@@ -28,6 +28,12 @@ export const useSignup = () => {
           ...user,
           image: imgJson.url,
         };
+      } else {
+        user = {
+          ...user,
+          image:
+            "https://z53d2b.p3cdn1.secureserver.net/wp-content/uploads/2020/05/Male-placeholder-1.jpeg",
+        };
       }
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/users/signup`,

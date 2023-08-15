@@ -8,7 +8,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [image, setImage] = useState(null);
 
-  const { signup } = useSignup();
+  const { signup, loading } = useSignup();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(email, password, fullname, username, image);
@@ -76,8 +76,8 @@ function Signup() {
             onChange={(e) => setImage(e.target.files[0])}
           />
         </div>
-        <button type="submit" className="btn-primary">
-          Signup
+        <button className="btn-primary" disabled={loading}>
+          {loading ? "Signing Up" : "Signup"}
         </button>
         <small>
           Already have an account? <NavLink to="/login">Login</NavLink>
