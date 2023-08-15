@@ -27,9 +27,12 @@ select {
   background: none;
 }
 body {
-  // box-shadow: inset 0px 0px 100px #ea117a8c;
+  // display: flex;
+
   background-color: #000000;
   color: #dde6ed;
+  height: 100vh;
+  max-height: max-content;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -42,4 +45,3 @@ body {
   // background: #ea117a;
   // border-radius: 10px;
 }
-

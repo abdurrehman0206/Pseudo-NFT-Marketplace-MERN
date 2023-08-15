@@ -1,5 +1,13 @@
 .collections {
   position: relative;
+  .pane-body {
+    overflow-y: scroll;
+    max-height: calc(100vh - 175px);
+    min-height: 370px;
+    @include device(mobile) {
+      max-height: calc(100vh - 260px);
+    }
+  }
 }
 .collections-header {
   //   position: sticky;

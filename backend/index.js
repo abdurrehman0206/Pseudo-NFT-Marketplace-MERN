@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const serverless = require("serverless-http");
 const corsOpts = {
-  origin: "http://localhost:3000",
+  origin: ["http://localhost:3000", "http://192.168.100.29:3000"],
   credentials: true,
   methods: ["GET", "POST", "HEAD", "PUT", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -36,7 +36,7 @@ mongoose
     });
   })
   .catch((err) => {
-    console.log(err);
+    console.log(err.message);
     throw new Error(err.message);
   });
 module.exports = app;

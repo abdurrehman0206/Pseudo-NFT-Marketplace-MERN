@@ -35,6 +35,9 @@ select {
 body {
   background-color: #000000;
   color: #dde6ed;
+  height: 100vh;
+  max-height: -moz-max-content;
+  max-height: max-content;
 }
 
 ::-webkit-scrollbar {
@@ -457,14 +460,6 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem;
-  overflow-y: scroll;
-  max-height: calc(100vh - 175px);
-  min-height: 370px;
-}
-@media (max-width: 767px) {
-  .pane-body {
-    max-height: calc(100vh - 260px);
-  }
 }
 
 .home-container {
@@ -709,6 +704,16 @@ body {
 .collections {
   position: relative;
 }
+.collections .pane-body {
+  overflow-y: scroll;
+  max-height: calc(100vh - 175px);
+  min-height: 370px;
+}
+@media (max-width: 767px) {
+  .collections .pane-body {
+    max-height: calc(100vh - 260px);
+  }
+}
 
 .collections-header h1 {
   text-align: center;
@@ -721,11 +726,16 @@ body {
 }
 .App-container .App {
   z-index: 1;
-  width: 80%;
+  width: 90%;
   height: 100%;
   max-width: 1200px;
   padding: 1rem;
   margin: 0 auto;
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .App-container .App {
+    width: 100%;
+  }
 }
 @media (max-width: 767px) {
   .App-container .App {

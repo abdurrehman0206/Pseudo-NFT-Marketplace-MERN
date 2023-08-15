@@ -1,6 +1,3 @@
-.pane-container {
-  //   border: 1px solid red;
-}
 .pane {
   // border: 1px solid blue;
   padding: $md;
@@ -39,10 +36,4 @@
   @include flex-layout(row, center, center);
   flex-wrap: wrap;
   gap: $md;
-  overflow-y: scroll;
-  max-height: calc(100vh - 175px);
-  min-height: 370px;
-  @include device(mobile) {
-    max-height: calc(100vh - 260px);
-  }
 }
