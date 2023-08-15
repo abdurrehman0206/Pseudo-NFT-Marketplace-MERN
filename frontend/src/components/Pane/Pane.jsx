@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import NftCard from "../NftCard/NftCard";
 function Pane(props) {
   const { title, navTo, nfts, hasButton } = props;
-  console.log("🚀 ~ file: Pane.jsx:6 ~ Pane ~ hasButton:", hasButton);
 
   return (
     <div className="pane-container">

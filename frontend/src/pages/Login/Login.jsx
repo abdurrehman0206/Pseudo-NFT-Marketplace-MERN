@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, error, loading } = useLogin();
+  const { login, loading } = useLogin();
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(email, password);

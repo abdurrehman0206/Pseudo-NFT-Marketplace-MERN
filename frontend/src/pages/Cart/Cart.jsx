@@ -1,10 +1,11 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNFTContext } from "../../hooks/useNFTContext";
-import { AiOutlineCloseCircle } from "react-icons/ai";
+
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 function Cart() {
+  const [removing, setRemoving] = useState(false);
   const { user, dispatch } = useAuthContext();
   const { nfts } = useNFTContext();
   const [nftsCart, setNfts] = useState(null);
@@ -30,6 +31,7 @@ function Cart() {
   }, [user.shoppingCart, nfts]);
   const removeFromCart = async (nftId) => {
     try {
+      setRemoving(true);
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${nftId}/removeFromCart`,
         {
@@ -54,6 +56,8 @@ function Cart() {
     } catch (error) {
       toast.error(error.message);
       console.log(error);
+    } finally {
+      setRemoving(false);
     }
   };
   if (total === 0) {
@@ -86,12 +90,13 @@ function Cart() {
                   <div className="cart-item-details">
                     <h3>{nft.name}</h3>
                     <p className="c-ac2">@{nft.artist}</p>
-                    <small
+                    <button
                       className="cart-item-remove c-ac1"
                       onClick={() => removeFromCart(nft._id)}
+                      disabled={removing}
                     >
-                      Remove
-                    </small>
+                      {removing ? "Removing..." : "Remove"}
+                    </button>
                   </div>
                   <div className="cart-item-actions">
                     <p> {nft.price} ETH</p>
