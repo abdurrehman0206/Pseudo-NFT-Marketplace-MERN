@@ -1,6 +1,6 @@
 const express = require("express");
-require("dotenv").config();
 const mongoose = require("mongoose");
+require("dotenv").config();
 const cors = require("cors");
 const app = express();
 const serverless = require("serverless-http");
