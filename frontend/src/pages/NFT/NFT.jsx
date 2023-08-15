@@ -46,7 +46,9 @@ function NFT() {
       <div className="nft">
         <div className="nft-left">
           <div className="triangle"></div>
-          <img src={nft.image} alt={nft.name} />
+          <div className="nft-image-wrapper">
+            <img src={nft.image} alt={nft.name} />
+          </div>
         </div>
         <div className="nft-right">
           <div className="nft-right-header">

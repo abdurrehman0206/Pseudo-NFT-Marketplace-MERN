@@ -1,6 +1,5 @@
 .nft {
   @include flex-layout(row, center, flex-start);
-  border: 1px solid red;
   @include device(mobile) {
     flex-direction: column;
   }
@@ -11,7 +10,7 @@
 
   overflow: hidden;
   flex-basis: 50%;
-  border: 1px solid red;
+
   img {
     border-radius: 10px;
     width: 100%;
@@ -34,13 +33,13 @@
   padding: $sm;
   border: radius 10px;
   flex-basis: 50%;
-  border: 1px solid red;
+
   @include flex-layout(column, center, flex-start);
   gap: $sm;
 }
 .nft-right-header {
   width: 100%;
-  border: 1px solid red;
+
   @include flex-layout(row, space-between, center);
   h1 {
     font-size: $xxl;
