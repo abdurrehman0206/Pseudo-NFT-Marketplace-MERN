@@ -29,9 +29,11 @@ function Cart() {
     setNfts(newArray);
     setTotal(totalPrice);
   }, [user.shoppingCart, nfts]);
-  const removeFromCart = async (nftId) => {
+  const removeFromCart = async (e, nftId) => {
     try {
       setRemoving(true);
+      e.target.disabled = true;
+      e.target.innerHTML = "Removing...";
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${nftId}/removeFromCart`,
         {
@@ -57,6 +59,7 @@ function Cart() {
       toast.error(error.message);
       console.log(error);
     } finally {
+      e.target.disabled = true;
       setRemoving(false);
     }
   };
@@ -92,10 +95,9 @@ function Cart() {
                     <p className="c-ac2">@{nft.artist}</p>
                     <button
                       className="cart-item-remove c-ac1"
-                      onClick={() => removeFromCart(nft._id)}
-                      disabled={removing}
+                      onClick={(e) => removeFromCart(e, nft._id)}
                     >
-                      {removing ? "Removing..." : "Remove"}
+                      Remove
                     </button>
                   </div>
                   <div className="cart-item-actions">
