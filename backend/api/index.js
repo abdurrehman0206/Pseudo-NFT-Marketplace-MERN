@@ -1,7 +1,7 @@
 const app = require("../index");
 require("dotenv").config();
 const cors = require("cors");
-const app = express();
+
 const serverless = require("serverless-http");
 const corsOpts = {
   origin: ["http://localhost:3000", "http://192.168.100.29:3000"],
