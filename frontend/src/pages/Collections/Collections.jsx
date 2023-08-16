@@ -2,6 +2,7 @@ import React from "react";
 import Pane from "../../components/Pane/Pane";
 import { useNFTContext } from "../../hooks/useNFTContext";
 function Collections() {
+  document.title = "Collections";
   const { nfts } = useNFTContext();
   if (!nfts) {
     return null;

@@ -5,6 +5,7 @@ import { useNFTContext } from "../../hooks/useNFTContext";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 function Cart() {
+  document.title = "My Cart";
   const [removing, setRemoving] = useState(false);
   const { user, dispatch } = useAuthContext();
   const { nfts } = useNFTContext();

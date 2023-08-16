@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useLogin } from "../../hooks/useLogin";
 import "react-toastify/dist/ReactToastify.css";
 function Login() {
+  document.title = "Login"; 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, loading } = useLogin();

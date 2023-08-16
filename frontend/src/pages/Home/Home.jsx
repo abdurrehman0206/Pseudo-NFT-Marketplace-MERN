@@ -4,6 +4,7 @@ import Pane from "../../components/Pane/Pane";
 import { useNFTContext } from "../../hooks/useNFTContext";
 import { useUsersContext } from "../../hooks/useUsersContext";
 function Home() {
+  document.title = "Home";
   const [latestNfts, setLatestNfts] = useState(null);
   const [latestUsers, setLatestUsers] = useState(null);
   const { nfts } = useNFTContext();
