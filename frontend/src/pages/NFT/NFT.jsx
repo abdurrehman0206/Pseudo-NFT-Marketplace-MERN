@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNFTContext } from "../../hooks/useNFTContext";
+import InfoCard from "../../components/InfoCard/InfoCard";
 function NFT() {
   const { nfts } = useNFTContext();
   const [nft, setNft] = useState("");
@@ -45,10 +46,7 @@ function NFT() {
     <div className="nft-container">
       <div className="nft">
         <div className="nft-left">
-          <div className="triangle"></div>
-          <div className="nft-image-wrapper">
-            <img src={nft.image} alt={nft.name} />
-          </div>
+          <img src={nft.image} alt={nft.name} />
         </div>
         <div className="nft-right">
           <div className="nft-right-header">
@@ -59,17 +57,20 @@ function NFT() {
               <p className="c-ac2">{nft.userName}</p>
             </div>
           </div>
+
           <div className="nft-right-body">
-            <p>{nft.desc}</p>
+            <InfoCard title={"Price"} content={nft.price} accent={"1"} />
+            <InfoCard title={"Category"} content={nft.category} accent={"3"} />
+            <InfoCard title={"Views"} content={2} accent={"2"} />
           </div>
           <div className="nft-right-footer">
-            <div className="nft-right-footer-info">
-              <p className="c-ac2">Price: {nft.price}</p>
-              <p className="c-ac2">Created: {nft.createdAt}</p>
-            </div>
+            <div className="nft-right-footer-info"></div>
             <div className="nft-right-footer-button"></div>
           </div>
         </div>
+      </div>
+      <div className="nft-bottom">
+        <p>{nft.desc}</p>
       </div>
     </div>
   );

@@ -1,0 +1,58 @@
+.info-card-container {
+  //   height: 100px;
+  width: 100px;
+}
+.info-card {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  @include flex-layout(column, center, center);
+  div {
+    text-align: center;
+    width: 100%;
+    padding: $md;
+  }
+  .info-card-title {
+    font-weight: 600;
+  }
+  &.theme-ac1 {
+    border: 2px solid $theme-accent1;
+    .info-card-title {
+      background-color: #ea117a91;
+    }
+    .info-card-content {
+      color: $theme-accent1;
+    }
+    box-shadow: 0px 0px 5px 2px #ea117a91;
+    &:hover {
+      box-shadow: 0px 0px 5px 3px #ea117a91;
+    }
+  }
+  &.theme-ac2 {
+    border: 2px solid $theme-accent2;
+    .info-card-title {
+      background-color: #5b8fb9a1;
+    }
+    .info-card-content {
+      color: $theme-accent2;
+    }
+    box-shadow: 0px 0px 5px 2px #5b8fb9a1;
+    &:hover {
+      box-shadow: 0px 0px 5px 3px #5b8fb9a1;
+    }
+  }
+  &.theme-ac3 {
+    border: 2px solid $theme-accent3;
+    .info-card-title {
+      background-color: #fec16088;
+    }
+    .info-card-content {
+      color: $theme-accent3;
+    }
+    box-shadow: 0px 0px 5px 2px #fec16088;
+    &:hover {
+      box-shadow: 0px 0px 5px 3px #fec16088;
+    }
+  }
+}

@@ -6,6 +6,7 @@
 @import "./pages/Cart/Cart";
 @import "./pages/Collections/Collections";
 @import "./pages/NFT/NFT";
+@import "./components/InfoCard/InfoCard";
 .App-container {
   height: 100%;
   width: 100%;
@@ -18,7 +19,7 @@
 
     padding: $lg;
     margin: 0 auto;
-   
+
     @include device(tablet) {
       width: 100%;
     }

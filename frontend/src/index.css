@@ -732,7 +732,6 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  border: 1px solid red;
 }
 @media (max-width: 767px) {
   .nft {
@@ -741,49 +740,43 @@ body {
 }
 
 .nft-left {
-  position: relative;
   padding: 0.5rem;
-  overflow: hidden;
   flex-basis: 50%;
-  border: 1px solid red;
 }
 .nft-left img {
   border-radius: 10px;
   width: 100%;
-  height: 500px;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: 50% 0;
      object-position: 50% 0;
 }
-.nft-left .triangle {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  -webkit-clip-path: polygon(100% 100%, 0 0, 100% 0%);
-          clip-path: polygon(100% 100%, 0 0, 100% 0%);
-  border-top-right-radius: 5px;
-  right: 8px;
+@media (max-width: 767px) {
+  .nft-left {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
 }
 
 .nft-right {
   padding: 0.5rem;
   border: radius 10px;
   flex-basis: 50%;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 0.5rem;
 }
+@media (max-width: 767px) {
+  .nft-right {
+    width: 100%;
+  }
+}
 
 .nft-right-header {
   width: 100%;
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -810,8 +803,82 @@ body {
   font-size: 1rem;
 }
 
-.nft-right-body p {
+.nft-bottom {
+  padding: 0.25rem;
+}
+.nft-bottom p {
   font-weight: 300;
+}
+
+.nft-right-body {
+  padding: 0.5rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-card-container {
+  width: 100px;
+}
+
+.info-card {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.info-card div {
+  text-align: center;
+  width: 100%;
+  padding: 0.75rem;
+}
+.info-card .info-card-title {
+  font-weight: 600;
+}
+.info-card.theme-ac1 {
+  border: 2px solid #ea117a;
+  box-shadow: 0px 0px 5px 2px rgba(234, 17, 122, 0.568627451);
+}
+.info-card.theme-ac1 .info-card-title {
+  background-color: rgba(234, 17, 122, 0.568627451);
+}
+.info-card.theme-ac1 .info-card-content {
+  color: #ea117a;
+}
+.info-card.theme-ac1:hover {
+  box-shadow: 0px 0px 5px 3px rgba(234, 17, 122, 0.568627451);
+}
+.info-card.theme-ac2 {
+  border: 2px solid #5b8fb9;
+  box-shadow: 0px 0px 5px 2px rgba(91, 143, 185, 0.631372549);
+}
+.info-card.theme-ac2 .info-card-title {
+  background-color: rgba(91, 143, 185, 0.631372549);
+}
+.info-card.theme-ac2 .info-card-content {
+  color: #5b8fb9;
+}
+.info-card.theme-ac2:hover {
+  box-shadow: 0px 0px 5px 3px rgba(91, 143, 185, 0.631372549);
+}
+.info-card.theme-ac3 {
+  border: 2px solid #fec260;
+  box-shadow: 0px 0px 5px 2px rgba(254, 193, 96, 0.5333333333);
+}
+.info-card.theme-ac3 .info-card-title {
+  background-color: rgba(254, 193, 96, 0.5333333333);
+}
+.info-card.theme-ac3 .info-card-content {
+  color: #fec260;
+}
+.info-card.theme-ac3:hover {
+  box-shadow: 0px 0px 5px 3px rgba(254, 193, 96, 0.5333333333);
 }
 
 .App-container {
