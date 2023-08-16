@@ -30,7 +30,7 @@ function Cart() {
     setNfts(newArray);
     setTotal(totalPrice);
   }, [user.shoppingCart, nfts]);
-  const removeFromCart = async (e, nftId) => {
+  const removeFromCart = async (e, nftId, nftUserId) => {
     try {
       setRemoving(true);
       e.target.disabled = true;
@@ -96,7 +96,7 @@ function Cart() {
                     <p className="c-ac2">@{nft.artist}</p>
                     <button
                       className="cart-item-remove c-ac1"
-                      onClick={(e) => removeFromCart(e, nft._id)}
+                      onClick={(e) => removeFromCart(e, nft._id, nft.user_id)}
                     >
                       Remove
                     </button>

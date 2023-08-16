@@ -5,7 +5,12 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { toast } from "react-toastify";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { FaEthereum } from "react-icons/fa";
-import { AiFillEye, AiFillLike, AiFillHeart , AiTwotoneHeart } from "react-icons/ai";
+import {
+  AiFillEye,
+  AiFillLike,
+  AiFillHeart,
+  AiTwotoneHeart,
+} from "react-icons/ai";
 import { BsHeartbreakFill, BsFillHeartFill, BsHeartFill } from "react-icons/bs";
 function NFT() {
   const nav = useNavigate();
@@ -21,11 +26,12 @@ function NFT() {
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${nft._id}/addToCart`,
         {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
           },
+          body: JSON.stringify({ nftUserId: nft.user_id }),
         }
       );
       const json = await response.json();

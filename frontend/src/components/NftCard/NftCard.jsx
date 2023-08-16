@@ -6,11 +6,13 @@ import { FaEthereum } from "react-icons/fa";
 function NftCard(props) {
   const [adding, setAdding] = useState(false);
   const { user, dispatch } = useAuthContext();
-  const { _id, name, price, image, artist, category } = props.nft;
+  const { _id, name, price, image, artist, category, user_id } = props.nft;
+
   const nav = useNavigate();
   const addToCart = async () => {
     try {
       setAdding(true);
+
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${_id}/addToCart`,
         {
@@ -19,6 +21,7 @@ function NftCard(props) {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
           },
+          body: JSON.stringify({ nftUserId: user_id }),
         }
       );
       const json = await response.json();

@@ -152,7 +152,15 @@ const likeNFT = async (req, res) => {
 };
 const addToCartNFT = async (req, res) => {
   const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
+  const { nftUserId } = req.body;
+  console.log(
+    "🚀 ~ file: nftController.js:156 ~ addToCartNFT ~ nftUserId:",
+    nftUserId
+  );
+  if (
+    !mongoose.Types.ObjectId.isValid(id) ||
+    !mongoose.Types.ObjectId.isValid(nftUserId)
+  ) {
     return res.status(404).json({
       success: false,
       message: "NFT not found",
@@ -160,19 +168,18 @@ const addToCartNFT = async (req, res) => {
     });
   }
   try {
-    const nft = await NFT.findById(id);
-    const user = await User.findById(req.user.id);
+    // const nft = await NFT.findById(id).select("user_id");
+    const user = await User.findById(req.user.id).select("shoppingCart");
+    console.log("🚀 ~ file: nftController.js:169 ~ addToCartNFT ~ user:", user);
 
-    if (nft.user_id.toString() === user._id.toString()) {
+    if (nftUserId === req.user.id.toString()) {
       return res.status(400).json({
         success: false,
         message: "Unable to buy",
         error: "You cannot buy your own NFT",
       });
     }
-    const isAlreadyInCart = user.shoppingCart.find(
-      (item) => item === nft._id.toString()
-    );
+    const isAlreadyInCart = user.shoppingCart.find((item) => item === id);
     if (isAlreadyInCart) {
       return res.status(400).json({
         success: false,
@@ -180,7 +187,7 @@ const addToCartNFT = async (req, res) => {
         error: "NFT already in cart",
       });
     } else {
-      user.shoppingCart.push(nft._id);
+      user.shoppingCart.push(id);
       user.save();
 
       res.status(200).json({
@@ -207,11 +214,9 @@ const removeFromCartNFT = async (req, res) => {
     });
   }
   try {
-    const nft = await NFT.findById(id);
-    const user = await User.findById(req.user.id);
-    const isInCart = user.shoppingCart.find(
-      (item) => item === nft._id.toString()
-    );
+    // const nft = await NFT.findById(id).select("_id");
+    const user = await User.findById(req.user.id).select("shoppingCart");
+    const isInCart = user.shoppingCart.find((item) => item === id);
     if (!isInCart) {
       return res.status(400).json({
         success: false,
@@ -219,9 +224,7 @@ const removeFromCartNFT = async (req, res) => {
         error: "NFT not in cart",
       });
     } else {
-      user.shoppingCart = user.shoppingCart.filter(
-        (item) => item !== nft._id.toString()
-      );
+      user.shoppingCart = user.shoppingCart.filter((item) => item !== id);
       user.save();
 
       res.status(200).json({
