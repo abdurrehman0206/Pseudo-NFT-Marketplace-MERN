@@ -28,6 +28,7 @@
   border: 1px solid $theme-accent3;
 }
 .btn-primary {
+  // line-height: 1;
   white-space: nowrap;
   color: $text-color;
   background-color: $theme-accent1;
@@ -114,7 +115,6 @@
   }
 }
 .btn-box-outline {
-  
   box-sizing: border-box;
   padding: $sm $lg;
   font-weight: 700;

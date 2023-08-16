@@ -282,6 +282,49 @@ body {
   font-weight: 700;
 }
 
+.artist-card {
+  padding: 0.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0a0a0a;
+  box-shadow: 0px 0px 1px 1px rgba(91, 143, 185, 0.2117647059);
+}
+.artist-card:hover {
+  box-shadow: 0px 0px 1px 1px rgba(91, 143, 185, 0.3843137255);
+}
+
+.artist-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 130px;
+  padding: 0.75rem;
+}
+.artist-card-header img {
+  margin-top: -10px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 50% 0;
+     object-position: 50% 0;
+  border: 3px solid #5b8fb9;
+}
+.artist-card-header h1 {
+  text-align: center;
+  font-size: 1rem;
+}
+.artist-card-header small {
+  margin-top: -5px;
+}
+
 .nft-container .back-button {
   font-size: 1.5rem;
   margin-left: 0.75rem;
@@ -933,6 +976,33 @@ body {
 .collections-header h1 {
   text-align: center;
   font-size: 1.25rem;
+}
+
+.artists {
+  position: relative;
+}
+.artists .pane-body {
+  overflow-y: scroll;
+  max-height: calc(100vh - 175px);
+  min-height: 175px;
+}
+@media (max-width: 767px) {
+  .artists .pane-body {
+    max-height: calc(100vh - 260px);
+  }
+}
+
+.artists-header h1 {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.artist-art {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .info-card-container {

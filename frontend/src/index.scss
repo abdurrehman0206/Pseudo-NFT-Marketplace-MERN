@@ -1,11 +1,13 @@
 @import "./partials/imports";
 @import "./components/NftCard/NftCard";
+@import "./components/ArtistCard/ArtistCard";
 @import "./pages/NFT/NFT";
 @import "./components/Navbar/Navbar";
 @import "./pages/Home/Home";
 @import "./pages/Login/Login";
 @import "./pages/Cart/Cart";
 @import "./pages/Collections/Collections";
+@import "./pages/Artists/Artists";
 @import "./components/InfoCard/InfoCard";
 .App-container {
   height: 100%;

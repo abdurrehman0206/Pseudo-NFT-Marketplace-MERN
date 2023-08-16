@@ -1,42 +1,37 @@
 import { createContext, useReducer, useLayoutEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-export const nftReducer = (state, action) => {
+export const usersReducer = (state, action) => {
   switch (action.type) {
-    case "SET_NFTS":
+    case "SET_USERS":
       return {
-        nfts: action.payload,
+        users: action.payload,
       };
 
-    case "ADD_NFT":
+    case "CLEAR_USERS":
       return {
-        nfts: [...state.blogs, action.payload],
-      };
-
-    case "CLEAR_NFTS":
-      return {
-        nfts: null,
+        users: null,
       };
 
     default:
       return state;
   }
 };
-export const NftContext = createContext();
-export const NftContextProvider = ({ children }) => {
+export const UsersContext = createContext();
+export const UsersContextProvider = ({ children }) => {
   const initialState = {
-    nfts: null,
+    users: null,
   };
 
-  const [state, dispatch] = useReducer(nftReducer, initialState);
+  const [state, dispatch] = useReducer(usersReducer, initialState);
   const { user } = useAuthContext();
   useLayoutEffect(() => {
     if (!user) {
       return;
     }
-    const fetchNFTs = async () => {
+    const fetchusers = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BASE_URL}/api/nfts`,
+          `${process.env.REACT_APP_BASE_URL}/api/users/all`,
           {
             method: "GET",
             headers: {
@@ -48,19 +43,19 @@ export const NftContextProvider = ({ children }) => {
         const json = await response.json();
         if (response.ok && json.success) {
           dispatch({
-            type: "SET_NFTS",
-            payload: json.data,
+            type: "SET_USERS",
+            payload: json.users,
           });
         }
       } catch (error) {
         console.log(error.message);
       }
     };
-    fetchNFTs();
+    fetchusers();
   }, [user]);
   return (
-    <NftContext.Provider value={{ ...state, dispatch }}>
+    <UsersContext.Provider value={{ ...state, dispatch }}>
       {children}
-    </NftContext.Provider>
+    </UsersContext.Provider>
   );
 };

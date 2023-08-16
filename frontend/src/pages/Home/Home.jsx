@@ -2,21 +2,30 @@ import React, { useLayoutEffect, useState } from "react";
 import Hero from "../../components/Hero/Hero";
 import Pane from "../../components/Pane/Pane";
 import { useNFTContext } from "../../hooks/useNFTContext";
+import { useUsersContext } from "../../hooks/useUsersContext";
 function Home() {
   const [latestNfts, setLatestNfts] = useState(null);
+  const [latestUsers, setLatestUsers] = useState(null);
   const { nfts } = useNFTContext();
+  const { users } = useUsersContext();
+
   useLayoutEffect(() => {
-    if (!nfts) {
+    if (!nfts || !users) {
       return;
     }
     let newNfts = [];
+    let newUsers = [];
     //only add three elements
     for (let i = 0; i < 3; i++) {
       newNfts.push(nfts[i]);
     }
+    for (let i = 0; i < 5; i++) {
+      newUsers.push(users[i]);
+    }
     setLatestNfts(newNfts);
-  }, [nfts]);
-  if (!nfts) {
+    setLatestUsers(newUsers);
+  }, [nfts, users]);
+  if (!nfts || !users) {
     return null;
   }
   return (
@@ -28,7 +37,12 @@ function Home() {
         nfts={latestNfts}
         hasButton={true}
       />
-      {/* <Pane title={"Connect With Aspiring Artists"} navTo={"artists"} /> */}
+      <Pane
+        title={"The Digital Fleet"}
+        navTo={"artists"}
+        users={latestUsers}
+        hasButton={true}
+      />
     </div>
   );
 }

@@ -1,0 +1,22 @@
+.artists {
+  position: relative;
+  .pane-body {
+    overflow-y: scroll;
+    max-height: calc(100vh - 175px);
+    min-height: 175px;
+    @include device(mobile) {
+      max-height: calc(100vh - 260px);
+    }
+  }
+}
+.artists-header {
+  //   position: sticky;
+  h1 {
+    text-align: center;
+    font-size: $xl;
+  }
+}
+.artist-art {
+  @include flex-layout(row, center, center);
+  gap: $sm;
+}
