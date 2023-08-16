@@ -111,29 +111,32 @@ function NFT() {
             <div className="overlay">
               <div className="nft-footer">
                 <div className="nft-footer-actions">
+                  <button className="btn-primary like-btn">
+                    <AiFillHeart />
+                  </button>
                   {user?.shoppingCart.find((nftId) => nftId === nft._id) ? (
                     <button
-                      className="btn-box-outline in-cart cart-btn"
+                      className="btn-outline in-cart cart-btn"
                       onClick={() => nav("/cart")}
                     ></button>
                   ) : (
                     <button
-                      className="btn-box-primary cart-btn"
+                      className="btn-primary cart-btn"
                       onClick={addToCart}
                       disabled={adding}
                     >
                       {adding ? "Adding..." : "Add to Cart"}
                     </button>
                   )}
-                  <button className="btn-box-outline like-btn">
-                    <AiFillHeart />
+
+                  <button className="nft-footer-info">
+                    {/* <span className="c-ac2"> */}
+                    <span>
+                      <FaEthereum className="c-ac2" />
+                    </span>
+                    <span className="c-ac2">{nft.price}</span>
+                    {/* </span> */}
                   </button>
-                </div>
-                <div className="nft-footer-info">
-                  <span className="c-ac3">
-                    <FaEthereum className="c-ac2" />
-                    {nft.price}
-                  </span>
                 </div>
               </div>
             </div>

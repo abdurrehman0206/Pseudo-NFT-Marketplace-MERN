@@ -28,6 +28,7 @@
   border: 1px solid $theme-accent3;
 }
 .btn-primary {
+  white-space: nowrap;
   color: $text-color;
   background-color: $theme-accent1;
   padding: $sm $lg;
@@ -60,6 +61,7 @@
   }
 }
 .btn-outline {
+  white-space: nowrap;
   padding: $sm $lg;
   font-weight: 700;
   border-radius: 20px;
@@ -86,6 +88,7 @@
   }
 }
 .btn-box-primary {
+  white-space: nowrap;
   color: $text-color;
   background-color: $theme-accent1;
   padding: $sm $lg;
@@ -111,6 +114,7 @@
   }
 }
 .btn-box-outline {
+  
   box-sizing: border-box;
   padding: $sm $lg;
   font-weight: 700;
