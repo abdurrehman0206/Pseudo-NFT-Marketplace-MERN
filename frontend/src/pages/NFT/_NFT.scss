@@ -40,7 +40,7 @@
       position: absolute;
       right: $sm;
       top: $sm;
-      gap : $sm;
+      gap: $sm;
       background-color: rgba(0, 0, 0, 0.4);
       background-color: rgba(0, 0, 0, 0.4);
       padding: $sm;
@@ -113,5 +113,16 @@
     span {
       @include flex-layout(row, center, center);
     }
+  }
+}
+.nft-footer-actions {
+  @include flex-layout(row, center, center);
+  gap: $sm;
+
+  .like-btn {
+    @include flex-layout(row, center, center);
+    font-size: $lg;
+   
+    padding: $sm;
   }
 }

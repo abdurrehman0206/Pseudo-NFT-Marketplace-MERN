@@ -13,6 +13,9 @@ button {
   border: none;
   outline: none;
   background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 ul {
@@ -159,6 +162,7 @@ body {
 }
 
 .btn-box-outline {
+  box-sizing: border-box;
   padding: 0.5rem 1rem;
   font-weight: 700;
   border-radius: 5px;
@@ -428,6 +432,22 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.nft-footer-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.nft-footer-actions .like-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  padding: 0.5rem;
 }
 
 .navbar-container {

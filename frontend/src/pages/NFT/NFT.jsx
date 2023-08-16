@@ -5,7 +5,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { toast } from "react-toastify";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { FaEthereum } from "react-icons/fa";
-import { AiFillEye, AiFillLike } from "react-icons/ai";
+import { AiFillEye, AiFillLike, AiFillHeart } from "react-icons/ai";
 function NFT() {
   const nav = useNavigate();
   const { user, dispatch } = useAuthContext();
@@ -107,25 +107,27 @@ function NFT() {
                 <AiFillLike />
                 <p>1</p>
               </span>
-              
             </div>
             <div className="overlay">
               <div className="nft-footer">
                 <div className="nft-footer-actions">
                   {user?.shoppingCart.find((nftId) => nftId === nft._id) ? (
                     <button
-                      className="btn-box-outline in-cart"
+                      className="btn-box-outline in-cart cart-btn"
                       onClick={() => nav("/cart")}
                     ></button>
                   ) : (
                     <button
-                      className="btn-box-primary"
+                      className="btn-box-primary cart-btn"
                       onClick={addToCart}
                       disabled={adding}
                     >
                       {adding ? "Adding..." : "Add to Cart"}
                     </button>
                   )}
+                  <button className="btn-box-outline like-btn">
+                    <AiFillHeart />
+                  </button>
                 </div>
                 <div className="nft-footer-info">
                   <span className="c-ac3">
