@@ -36,12 +36,14 @@ function Home() {
         title={"Browse Latest Collections"}
         navTo={"collections"}
         nfts={latestNfts}
+        users={null}
         hasButton={true}
       />
       <Pane
         title={"The Digital Fleet"}
         navTo={"artists"}
         users={latestUsers}
+        nfts={null}
         hasButton={true}
       />
     </div>

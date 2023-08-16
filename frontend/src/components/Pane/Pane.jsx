@@ -19,12 +19,8 @@ function Pane(props) {
           )}
         </div>
         <div className="pane-body">
-          {nfts?.map((nft) => (
-            <NftCard key={nft._id} nft={nft} />
-          ))}
-          {users?.map((user) => (
-            <ArtistCard key={user._id} user={user} />
-          ))}
+          {nfts && nfts?.map((nft) => <NftCard key={nft._id} nft={nft} />)}
+          {users && users?.map((user, i) => <ArtistCard key={i} user={user} />)}
         </div>
       </div>
     </div>
