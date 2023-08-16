@@ -285,6 +285,7 @@ body {
 .nft-container .back-button {
   font-size: 1.5rem;
   margin-left: 0.75rem;
+  font-weight: 700;
 }
 
 .nft {
@@ -413,6 +414,8 @@ body {
 
 .nft-body p {
   font-weight: 300;
+  text-align: justify;
+  text-justify: auto;
 }
 
 .nft-right-body {
@@ -506,11 +509,13 @@ body {
   left: 50%;
   transform: translateX(-50%);
   padding: 0.5rem 0;
-  overflow: hidden;
+  font-weight: 700;
 }
 .nav-links a {
+  position: relative;
   border: 1px solid transparent;
   padding: 0.5rem 0.75rem;
+  border-radius: 10px;
 }
 .nav-links a:hover {
   text-decoration: underline;
@@ -522,6 +527,17 @@ body {
 .nav-links a.active:hover {
   text-decoration: none;
   color: #dde6ed;
+}
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 5px);
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background-color: #ea117a;
+  border-bottom-right-radius: 2px;
 }
 @media (max-width: 767px) {
   .nav-links {
@@ -543,9 +559,7 @@ body {
   display: block;
 }
 .nav-actions .nav-user-info {
-  background-color: rgba(234, 17, 122, 0.4235294118);
   border-radius: 20px;
-  padding: 0.25rem;
   display: flex;
   flex-direction: row;
   justify-content: center;

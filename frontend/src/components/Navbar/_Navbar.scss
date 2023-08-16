@@ -29,11 +29,14 @@
   transform: translateX(-50%);
   padding: $sm 0;
   // border-radius: 5px;
-  overflow: hidden;
+  // overflow: hidden;
+  font-weight: 700;
 
   a {
+    position: relative;
     border: 1px solid transparent;
     padding: $sm $md;
+    border-radius: 10px;
     &:hover {
       text-decoration: underline;
       color: $theme-accent1;
@@ -43,6 +46,18 @@
       &:hover {
         text-decoration: none;
         color: $text-color;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: calc(50% - 5px);
+
+        bottom: -5px;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+        background-color: $theme-accent1;
+        border-bottom-right-radius: 2px;
       }
     }
   }
@@ -60,14 +75,16 @@
     display: block;
   }
   .nav-user-info {
-    background-color: #ea117a6c;
+    // background-color: #ea117a6c;
     border-radius: 20px;
+    // border :1px solid $theme-accent1;
 
-    padding: $xs;
+    // padding: $xs;
     @include flex-layout(row, center, center);
     gap: $sm;
 
     img {
+      // border :2px solid $theme-accent1;
       width: 30px;
       height: 30px;
       border-radius: 50%;

@@ -2,6 +2,7 @@
   .back-button {
     font-size: $xxl;
     margin-left: $md;
+    font-weight: 700;
   }
 }
 .nft {
@@ -101,6 +102,8 @@
 .nft-body {
   p {
     font-weight: 300;
+    text-align: justify;
+    text-justify: auto;
   }
 }
 .nft-right-body {
