@@ -153,10 +153,7 @@ const likeNFT = async (req, res) => {
 const addToCartNFT = async (req, res) => {
   const { id } = req.params;
   const { nftUserId } = req.body;
-  console.log(
-    "🚀 ~ file: nftController.js:156 ~ addToCartNFT ~ nftUserId:",
-    nftUserId
-  );
+
   if (
     !mongoose.Types.ObjectId.isValid(id) ||
     !mongoose.Types.ObjectId.isValid(nftUserId)
@@ -170,7 +167,6 @@ const addToCartNFT = async (req, res) => {
   try {
     // const nft = await NFT.findById(id).select("user_id");
     const user = await User.findById(req.user.id).select("shoppingCart");
-    console.log("🚀 ~ file: nftController.js:169 ~ addToCartNFT ~ user:", user);
 
     if (nftUserId === req.user.id.toString()) {
       return res.status(400).json({

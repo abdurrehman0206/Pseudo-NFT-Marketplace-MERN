@@ -4,7 +4,6 @@ import NftCard from "../NftCard/NftCard";
 import ArtistCard from "../ArtistCard/ArtistCard";
 function Pane(props) {
   const { title, navTo, nfts, users, hasButton } = props;
-  console.log("🚀 ~ file: Pane.jsx:7 ~ Pane ~ props:", props)
 
   return (
     <div className="pane-container">
