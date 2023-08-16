@@ -16,6 +16,7 @@ const nftSchema = new Schema(
     price: { type: Number, required: true },
     user_id: { type: String },
     views: [{ type: String }],
+    likes: [{ type: String }],
   },
   { timestamps: true }
 );

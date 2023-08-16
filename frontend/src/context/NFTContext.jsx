@@ -11,7 +11,8 @@ export const nftReducer = (state, action) => {
       return {
         nfts: [...state.blogs, action.payload],
       };
-
+      case "LIKE_NFT":
+        
     case "CLEAR_NFTS":
       return {
         nfts: null,

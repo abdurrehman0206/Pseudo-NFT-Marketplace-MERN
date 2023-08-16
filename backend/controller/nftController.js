@@ -109,6 +109,47 @@ const updateNFT = async (req, res) => {
     });
   }
 };
+const likeNFT = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({
+      success: false,
+      message: "NFT not found",
+      error: "Invalid Id",
+    });
+  }
+  try {
+    const nft = await NFT.findById(id);
+    let alreadyLiked = false;
+    if (nft.likes.length > 0) {
+      alreadyLiked = nft.likes.find((like) => like === req.user.id);
+    }
+    if (alreadyLiked) {
+      nft.likes = nft.likes.filter((like) => like !== req.user.id);
+      nft.save();
+      res.status(200).json({
+        success: true,
+        message: "NFT unliked successfully",
+        data: nft,
+      });
+    } else {
+      nft.likes.push(req.user.id);
+      nft.save();
+      res.status(200).json({
+        success: true,
+        message: "NFT liked successfully",
+        data: nft,
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      error: "NFT not found",
+      message: error.message,
+    });
+  }
+};
 const addToCartNFT = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -227,6 +268,7 @@ module.exports = {
   getNFTs,
   getNFT,
   updateNFT,
+  likeNFT,
   addToCartNFT,
   removeFromCartNFT,
   deleteNFT,

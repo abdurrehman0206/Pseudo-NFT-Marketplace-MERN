@@ -10,6 +10,7 @@ const {
   deleteNFT,
   addToCartNFT,
   removeFromCartNFT,
+  likeNFT,
 } = require("../controller/nftController");
 
 router.use(requireAuth);
@@ -17,9 +18,9 @@ router.post("/", createNFT);
 router.get("/", getNFTs);
 router.get("/:id", getNFT);
 router.put("/:id", updateNFT);
-router.put("/:id/addToCart", addToCartNFT);
-router.put("/:id/removeFromCart", removeFromCartNFT);
+router.patch("/:id/addToCart", addToCartNFT);
+router.patch("/:id/removeFromCart", removeFromCartNFT);
+router.patch("/:id/like", likeNFT);
 router.delete("/:id", deleteNFT);
 
 module.exports = router;
- 

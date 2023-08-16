@@ -40,6 +40,7 @@
       @include flex-layout(row, center, center);
     }
     .infolay {
+      // width: 100%;
       @include flex-layout(column, center, center);
       position: absolute;
       right: $sm;
@@ -50,9 +51,21 @@
       padding: $sm;
       border-radius: 10px;
 
-      span {
-        @include flex-layout(row, center, center);
+      div {
+        // padding: $xs $sm;
+
+        @include flex-layout(row-reverse, space-between, center);
+        width: 100%;
         gap: $xs;
+        span {
+          @include flex-layout(row, center, center);
+        }
+        p {
+          display: block;
+
+          text-align: center;
+          flex-basis: 100%;
+        }
       }
     }
   }

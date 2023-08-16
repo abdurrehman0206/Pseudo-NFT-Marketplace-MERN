@@ -38,7 +38,7 @@ function Cart() {
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/api/nfts/${nftId}/removeFromCart`,
         {
-          method: "PUT",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,

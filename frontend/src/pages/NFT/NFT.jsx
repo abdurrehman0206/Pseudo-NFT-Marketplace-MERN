@@ -5,7 +5,8 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { toast } from "react-toastify";
 import InfoCard from "../../components/InfoCard/InfoCard";
 import { FaEthereum } from "react-icons/fa";
-import { AiFillEye, AiFillLike, AiFillHeart } from "react-icons/ai";
+import { AiFillEye, AiFillLike, AiFillHeart , AiTwotoneHeart } from "react-icons/ai";
+import { BsHeartbreakFill, BsFillHeartFill, BsHeartFill } from "react-icons/bs";
 function NFT() {
   const nav = useNavigate();
   const { user, dispatch } = useAuthContext();
@@ -13,6 +14,7 @@ function NFT() {
   const [nft, setNft] = useState("");
   const { nftId } = useParams();
   const [adding, setAdding] = useState(false);
+  const [liking, setLiking] = useState(false);
   const addToCart = async () => {
     try {
       setAdding(true);
@@ -42,6 +44,37 @@ function NFT() {
       console.log(error);
     } finally {
       setAdding(false);
+    }
+  };
+  const likeNft = async () => {
+    try {
+      setLiking(true);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/api/nfts/${nft._id}/like`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      const json = await response.json();
+      if (response.ok && json.success) {
+        setNft({
+          ...nft,
+          likes: json.data.likes,
+        });
+        toast.success(json.message);
+      } else {
+        toast.error(json.error);
+        console.log(json.error);
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    } finally {
+      setLiking(false);
     }
   };
   useLayoutEffect(() => {
@@ -99,21 +132,39 @@ function NFT() {
           <div className="nft-left-img-wrapper">
             <img src={nft.image} alt={nft.name} />
             <div className="infolay">
-              <span className="c-ac2">
-                <AiFillEye />
+              <div className="c-ac2">
+                <span>
+                  <AiFillEye />
+                </span>
                 <p>{nft.views.length}</p>
-              </span>
-              <span className="c-ac1">
-                <AiFillLike />
-                <p>1</p>
-              </span>
+              </div>
+              <div className="c-ac1">
+                <span>
+                  <AiTwotoneHeart />
+                </span>
+                <p>{nft.likes.length}</p>
+              </div>
             </div>
             <div className="overlay">
               <div className="nft-footer">
                 <div className="nft-footer-actions">
-                  <button className="btn-primary like-btn">
-                    <AiFillHeart />
-                  </button>
+                  {nft.likes.find((like) => like === user.id) ? (
+                    <button
+                      className="btn-outline like-btn"
+                      onClick={likeNft}
+                      disabled={liking}
+                    >
+                      <BsHeartbreakFill />
+                    </button>
+                  ) : (
+                    <button
+                      className="btn-primary like-btn"
+                      onClick={likeNft}
+                      disabled={liking}
+                    >
+                      <BsHeartFill />
+                    </button>
+                  )}
                   {user?.shoppingCart.find((nftId) => nftId === nft._id) ? (
                     <button
                       className="btn-outline in-cart cart-btn"
