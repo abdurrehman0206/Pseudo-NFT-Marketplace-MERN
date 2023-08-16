@@ -1,21 +1,56 @@
+.nft-container {
+  .back-button {
+    font-size: $xxl;
+    margin-left: $md;
+  }
+}
 .nft {
-  @include flex-layout(row, center, flex-start);
+  @include flex-layout(row-reverse, center, flex-start);
   @include device(mobile) {
     flex-direction: column;
   }
 }
 .nft-left {
   padding: $sm;
-
   flex-basis: 50%;
-
-  // border-bottom-right-radius: 5px;
-  img {
+  border-radius: 10px;
+  .nft-left-img-wrapper {
+    position: relative;
+    overflow: hidden;
     border-radius: 10px;
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    object-position: 50% 0;
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: 50% 0;
+    }
+    .overlay {
+      position: absolute;
+      height: 70px;
+      width: 100%;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      @include flex-layout(row, center, center);
+    }
+    .infolay {
+      @include flex-layout(column, center, center);
+      position: absolute;
+      right: $sm;
+      top: $sm;
+      gap : $sm;
+      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: $sm;
+      border-radius: 10px;
+
+      span {
+        @include flex-layout(row, center, center);
+        gap: $xs;
+      }
+    }
   }
   @include device(mobile) {
     margin-bottom: $sm;
@@ -35,10 +70,15 @@
 }
 .nft-right-header {
   width: 100%;
-
+  border-bottom: 2px solid $theme-accent1;
+  padding: 0 0 $sm 0;
   @include flex-layout(row, space-between, center);
   h1 {
     font-size: $xxl;
+    span {
+      padding: 0 $sm;
+      font-size: 14px;
+    }
   }
   .nft-right-header-info {
     @include flex-layout(row, center, center);
@@ -55,14 +95,23 @@
     }
   }
 }
-.nft-bottom {
-  padding: $xs;
+.nft-body {
   p {
     font-weight: 300;
   }
 }
 .nft-right-body {
-  padding: $sm 0;
   width: 100%;
   @include flex-layout(row, space-between, center);
+}
+
+.nft-footer {
+  padding: $sm;
+  width: 100%;
+  @include flex-layout(row, space-between, center);
+  .nft-footer-info {
+    span {
+      @include flex-layout(row, center, center);
+    }
+  }
 }

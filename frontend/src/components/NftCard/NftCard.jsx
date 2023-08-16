@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaEthereum } from "react-icons/fa";
 function NftCard(props) {
   const [adding, setAdding] = useState(false);
   const { user, dispatch } = useAuthContext();

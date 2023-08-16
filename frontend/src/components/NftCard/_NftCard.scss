@@ -45,16 +45,10 @@
   padding: $xs $sm;
   color: $theme-accent2;
   font-weight: 500;
+  @include flex-layout(row, center, center);
 }
 .nft-card-category {
   left: $sm;
-}
-
-.nft-card-price {
-  right: $sm;
-}
-.nft-card-name{
-  font-weight: 700;
 }
 .in-cart {
   color: $theme-accent3;
@@ -70,4 +64,10 @@
       content: "Open Cart";
     }
   }
+}
+.nft-card-price {
+  right: $sm;
+}
+.nft-card-name {
+  font-weight: 700;
 }

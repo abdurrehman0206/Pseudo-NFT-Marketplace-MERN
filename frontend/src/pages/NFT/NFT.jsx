@@ -1,76 +1,163 @@
 import React, { useLayoutEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useNFTContext } from "../../hooks/useNFTContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { toast } from "react-toastify";
 import InfoCard from "../../components/InfoCard/InfoCard";
+import { FaEthereum } from "react-icons/fa";
+import { AiFillEye, AiFillLike } from "react-icons/ai";
 function NFT() {
+  const nav = useNavigate();
+  const { user, dispatch } = useAuthContext();
   const { nfts } = useNFTContext();
   const [nft, setNft] = useState("");
   const { nftId } = useParams();
+  const [adding, setAdding] = useState(false);
+  const addToCart = async () => {
+    try {
+      setAdding(true);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/api/nfts/${nft._id}/addToCart`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      const json = await response.json();
+      if (response.ok && json.success) {
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: json.data,
+        });
+        toast.success(json.message);
+      } else {
+        toast.error(json.error);
+        console.log(json.error);
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log(error);
+    } finally {
+      setAdding(false);
+    }
+  };
   useLayoutEffect(() => {
-    if (!nfts) return;
+    if (!nfts || !user) return;
     const getSingleNft = async () => {
-      let singleNft = nfts.find((item) => item._id === nftId);
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_BASE_URL}/api/users/artist/${singleNft.user_id}`,
+        const nftRes = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/api/nfts/${nftId}`,
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
+              Authorization: `Bearer ${user.token}`,
             },
           }
         );
-        const json = await response.json();
-        if (json.success && response.ok) {
-          console.log(json.data);
-          singleNft = {
-            ...singleNft,
-            userName: json.data.username,
-            userImage: json.data.image,
-          };
+        const nftJson = await nftRes.json();
+        if (nftJson.success) {
+          const response = await fetch(
+            `${process.env.REACT_APP_BASE_URL}/api/users/artist/${nftJson.data.user_id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${user.token}}`,
+              },
+            }
+          );
+          const json = await response.json();
+          if (json.success && response.ok) {
+            setNft({
+              ...nftJson.data,
+              userName: json.data.username,
+              userImage: json.data.image,
+            });
+          }
         }
       } catch (error) {
         console.log(error);
-      } finally {
-        setNft(singleNft);
       }
     };
     getSingleNft();
-  }, [nftId, nfts]);
-  if (!nfts || !nft) {
+  }, [nftId, nfts, user]);
+  if (!nfts || !nft || !user) {
     return null;
   }
 
   return (
     <div className="nft-container">
+      <button className="back-button c-ac1" onClick={() => nav("/collections")}>
+        ←
+      </button>
       <div className="nft">
         <div className="nft-left">
-          <img src={nft.image} alt={nft.name} />
+          <div className="nft-left-img-wrapper">
+            <img src={nft.image} alt={nft.name} />
+            <div className="infolay">
+              <span className="c-ac2">
+                <AiFillEye />
+                <p>{nft.views.length}</p>
+              </span>
+              <span className="c-ac1">
+                <AiFillLike />
+                <p>1</p>
+              </span>
+              
+            </div>
+            <div className="overlay">
+              <div className="nft-footer">
+                <div className="nft-footer-actions">
+                  {user?.shoppingCart.find((nftId) => nftId === nft._id) ? (
+                    <button
+                      className="btn-box-outline in-cart"
+                      onClick={() => nav("/cart")}
+                    ></button>
+                  ) : (
+                    <button
+                      className="btn-box-primary"
+                      onClick={addToCart}
+                      disabled={adding}
+                    >
+                      {adding ? "Adding..." : "Add to Cart"}
+                    </button>
+                  )}
+                </div>
+                <div className="nft-footer-info">
+                  <span className="c-ac3">
+                    <FaEthereum className="c-ac2" />
+                    {nft.price}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="nft-right-body">
+            <InfoCard title={"Price"} content={nft.price} accent={"1"} />
+            <InfoCard title={"Category"} content={nft.category} accent={"3"} />
+            <InfoCard title={"Views"} content={nft.views.length} accent={"2"} />
+          </div> */}
         </div>
         <div className="nft-right">
           <div className="nft-right-header">
-            <h1>{nft.name}</h1>
+            <h1>
+              {nft.name}
+              <span className="c-ac3">{nft.category}</span>
+            </h1>
             {/* <p>{nft.desc}</p> */}
             <div className="nft-right-header-info">
               <img src={nft.userImage} alt="nft user" />
               <p className="c-ac2">{nft.userName}</p>
             </div>
           </div>
-
-          <div className="nft-right-body">
-            <InfoCard title={"Price"} content={nft.price} accent={"1"} />
-            <InfoCard title={"Category"} content={nft.category} accent={"3"} />
-            <InfoCard title={"Views"} content={2} accent={"2"} />
-          </div>
-          <div className="nft-right-footer">
-            <div className="nft-right-footer-info"></div>
-            <div className="nft-right-footer-button"></div>
+          <div className="nft-body">
+            <p>{nft.desc}</p>
           </div>
         </div>
-      </div>
-      <div className="nft-bottom">
-        <p>{nft.desc}</p>
       </div>
     </div>
   );

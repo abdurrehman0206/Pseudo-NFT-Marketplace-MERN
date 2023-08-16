@@ -59,6 +59,11 @@ const getNFT = async (req, res) => {
   }
   try {
     const nft = await NFT.findById(id);
+    const isViewed = nft.views.find((view) => view === req.user.id);
+    if (!isViewed) {
+      nft.views.push(req.user.id);
+      nft.save();
+    }
     res.status(200).json({
       success: true,
       message: "NFT fetched successfully",
