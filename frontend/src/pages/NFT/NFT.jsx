@@ -127,7 +127,7 @@ function NFT() {
     };
     getSingleNft();
   }, [nftId, nfts, user]);
-  if (loading && !nfts) {
+  if (loading && !nft) {
     return <Loader />;
   }
   if (!nfts || !nft || !user) {
