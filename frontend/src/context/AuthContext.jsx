@@ -12,6 +12,10 @@ export const userReducer = (state, action) => {
         user: null,
       };
     case "ADD_TO_CART":
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...state.user, shoppingCart: action.payload })
+      );
       return {
         user: {
           ...state.user,
@@ -19,6 +23,10 @@ export const userReducer = (state, action) => {
         },
       };
     case "REMOVE_FROM_CART":
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...state.user, shoppingCart: action.payload })
+      );
       return {
         user: {
           ...state.user,

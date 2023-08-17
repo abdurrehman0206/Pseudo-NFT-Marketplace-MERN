@@ -9,7 +9,7 @@ function Home() {
   const [latestNfts, setLatestNfts] = useState(null);
   const [latestUsers, setLatestUsers] = useState(null);
   const { nfts, loading: nftsLoading } = useNFTContext();
-  const { users, loading: usersLoading } = useUsersContext();
+  const { users } = useUsersContext();
 
   useLayoutEffect(() => {
     if (!nfts || !users) {
