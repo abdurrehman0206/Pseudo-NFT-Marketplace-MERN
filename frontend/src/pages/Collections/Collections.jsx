@@ -5,7 +5,7 @@ import { useNFTContext } from "../../hooks/useNFTContext";
 function Collections() {
   document.title = "Collections";
   const { nfts, loading: nftsLoading } = useNFTContext();
-  if (nftsLoading) {
+  if (nftsLoading && !nfts) {
     return <Loader />;
   }
   if (!nfts) {

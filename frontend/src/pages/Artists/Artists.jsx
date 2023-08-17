@@ -8,7 +8,7 @@ function Artists() {
   if (!artists) {
     return null;
   }
-  if (usersLoading) {
+  if (usersLoading && !artists) {
     return <Loader />;
   }
   return (

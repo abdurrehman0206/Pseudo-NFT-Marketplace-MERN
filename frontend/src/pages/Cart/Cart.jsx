@@ -76,7 +76,7 @@ function Cart() {
       </div>
     );
   }
-  if (nftsLoading) {
+  if (nftsLoading && !nfts) {
     return <Loader />;
   }
   return (
