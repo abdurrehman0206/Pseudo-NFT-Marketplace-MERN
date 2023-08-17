@@ -5,12 +5,13 @@ import Loader from "../../components/Loader/Loader";
 function Artists() {
   document.title = "Artists";
   const { users: artists, loading: usersLoading } = useUsersContext();
-  if (!artists) {
-    return null;
-  }
   if (usersLoading && !artists) {
     return <Loader />;
   }
+  if (!artists) {
+    return null;
+  }
+
   return (
     <div className="artists-container">
       <div className="artists">

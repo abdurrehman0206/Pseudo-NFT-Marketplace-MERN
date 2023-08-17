@@ -17,7 +17,7 @@ function Navbar() {
             <span className="c-ac2">i</span>o
           </h1>
         </div>
-        {(!nftsLoading || nfts) ? (
+        {!nftsLoading || nfts ? (
           <div className="nav-actions">
             {!user ? (
               <NavLink to="/login" className="btn-primary">
@@ -47,7 +47,7 @@ function Navbar() {
           <div className="nav-links">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/collections">Collections</NavLink>
-            <NavLink to="/Artists">Artists</NavLink>
+            <NavLink to="/artists">Artists</NavLink>
           </div>
         )}
       </div>
