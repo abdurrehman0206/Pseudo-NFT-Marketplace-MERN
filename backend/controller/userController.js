@@ -156,7 +156,7 @@ const getUsers = async (req, res) => {
   try {
     const users = await User.find().select(
       "username fullname image userCollection -_id"
-    );
+    ).sort({ createdAt: -1 });
 
     return res.status(200).json({
       success: true,
