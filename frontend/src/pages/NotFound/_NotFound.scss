@@ -1,0 +1,10 @@
+.not-found {
+  @include flex-layout(column, center, center);
+  h1 {
+    font-size: $lg;
+    @include flex-layout(column, center, center);
+  }
+  a {
+    margin-top: $lg;
+  }
+}

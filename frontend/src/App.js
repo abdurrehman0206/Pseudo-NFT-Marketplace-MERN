@@ -9,7 +9,7 @@ import Cart from "./pages/Cart/Cart";
 import Collections from "./pages/Collections/Collections";
 import NFT from "./pages/NFT/NFT";
 import Artists from "./pages/Artists/Artists";
-import Loader from "./components/Loader/Loader";
+import NotFound from "./pages/NotFound/NotFound";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -46,6 +46,10 @@ function App() {
             <Route
               path="/signup"
               element={!user ? <Signup /> : <Navigate to="/" />}
+            />
+            <Route
+              path="*"
+              element={user ? <NotFound /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>
