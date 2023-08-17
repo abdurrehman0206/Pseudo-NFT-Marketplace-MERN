@@ -30,7 +30,7 @@ function Navbar() {
                   <NavLink to="/cart">
                     <BsCartCheck className="user-cart" />
                   </NavLink>
-                  {user.shoppingCart.length}
+                  {user?.shoppingCart?.length}
                 </span>
               </div>
               <button onClick={() => logout()} className="btn-outline">

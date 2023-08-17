@@ -3,15 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useNFTContext } from "../../hooks/useNFTContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { toast } from "react-toastify";
-import InfoCard from "../../components/InfoCard/InfoCard";
 import { FaEthereum } from "react-icons/fa";
-import {
-  AiFillEye,
-  AiFillLike,
-  AiFillHeart,
-  AiTwotoneHeart,
-} from "react-icons/ai";
-import { BsHeartbreakFill, BsFillHeartFill, BsHeartFill } from "react-icons/bs";
+import { AiFillEye, AiTwotoneHeart } from "react-icons/ai";
+import { BsHeartbreakFill, BsHeartFill } from "react-icons/bs";
+import Loader from "../../components/Loader/Loader";
 function NFT() {
   const nav = useNavigate();
   const { user, dispatch } = useAuthContext();
@@ -20,6 +15,7 @@ function NFT() {
   const { nftId } = useParams();
   const [adding, setAdding] = useState(false);
   const [liking, setLiking] = useState(false);
+  const [loading, setLoading] = useState(false);
   const addToCart = async () => {
     try {
       setAdding(true);
@@ -87,6 +83,7 @@ function NFT() {
     if (!nfts || !user) return;
     const getSingleNft = async () => {
       try {
+        setLoading(true);
         const nftRes = await fetch(
           `${process.env.REACT_APP_BASE_URL}/api/nfts/${nftId}`,
           {
@@ -116,14 +113,23 @@ function NFT() {
               userName: json.data.username,
               userImage: json.data.image,
             });
+          } else {
+            toast.error(json.error);
+            console.log(json.error);
           }
         }
       } catch (error) {
+        toast.error(error.message);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
     getSingleNft();
   }, [nftId, nfts, user]);
+  if (loading) {
+    return <Loader />;
+  }
   if (!nfts || !nft || !user) {
     return null;
   }

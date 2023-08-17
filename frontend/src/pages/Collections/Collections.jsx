@@ -1,9 +1,13 @@
 import React from "react";
 import Pane from "../../components/Pane/Pane";
+import Loader from "../../components/Loader/Loader";
 import { useNFTContext } from "../../hooks/useNFTContext";
 function Collections() {
   document.title = "Collections";
-  const { nfts } = useNFTContext();
+  const { nfts, loading: nftsLoading } = useNFTContext();
+  if (nftsLoading) {
+    return <Loader />;
+  }
   if (!nfts) {
     return null;
   }

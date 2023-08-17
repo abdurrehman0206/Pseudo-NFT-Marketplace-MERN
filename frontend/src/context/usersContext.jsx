@@ -1,4 +1,4 @@
-import { createContext, useReducer, useLayoutEffect } from "react";
+import { createContext, useReducer, useLayoutEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 export const usersReducer = (state, action) => {
   switch (action.type) {
@@ -24,11 +24,13 @@ export const UsersContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(usersReducer, initialState);
   const { user } = useAuthContext();
+  const [loading, setLoading] = useState(false);
   useLayoutEffect(() => {
     if (!user) {
       return;
     }
     const fetchusers = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `${process.env.REACT_APP_BASE_URL}/api/users/all`,
@@ -49,12 +51,14 @@ export const UsersContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     fetchusers();
   }, [user]);
   return (
-    <UsersContext.Provider value={{ ...state, dispatch }}>
+    <UsersContext.Provider value={{ ...state, loading, dispatch }}>
       {children}
     </UsersContext.Provider>
   );

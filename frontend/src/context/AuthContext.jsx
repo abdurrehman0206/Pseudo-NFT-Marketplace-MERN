@@ -34,6 +34,7 @@ export const AuthContextProvider = ({ children }) => {
     user: JSON.parse(localStorage.getItem("user")),
   };
   const [state, dispatch] = useReducer(userReducer, initialState);
+
   useLayoutEffect(() => {
     const checkUser = async () => {
       const user = JSON.parse(localStorage.getItem("user"));

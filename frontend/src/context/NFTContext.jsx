@@ -1,4 +1,4 @@
-import { createContext, useReducer, useLayoutEffect } from "react";
+import { createContext, useReducer, useLayoutEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 export const nftReducer = (state, action) => {
   switch (action.type) {
@@ -11,8 +11,8 @@ export const nftReducer = (state, action) => {
       return {
         nfts: [...state.blogs, action.payload],
       };
-      case "LIKE_NFT":
-        
+    case "LIKE_NFT":
+
     case "CLEAR_NFTS":
       return {
         nfts: null,
@@ -30,12 +30,14 @@ export const NftContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(nftReducer, initialState);
   const { user } = useAuthContext();
+  const [loading, setLoading] = useState(false);
   useLayoutEffect(() => {
     if (!user) {
       return;
     }
     const fetchNFTs = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `${process.env.REACT_APP_BASE_URL}/api/nfts`,
           {
@@ -55,12 +57,14 @@ export const NftContextProvider = ({ children }) => {
         }
       } catch (error) {
         console.log(error.message);
+      } finally {
+        setLoading(false);
       }
     };
     fetchNFTs();
   }, [user]);
   return (
-    <NftContext.Provider value={{ ...state, dispatch }}>
+    <NftContext.Provider value={{ ...state, loading, dispatch }}>
       {children}
     </NftContext.Provider>
   );

@@ -1,11 +1,15 @@
 import React from "react";
 import Pane from "../../components/Pane/Pane";
 import { useUsersContext } from "../../hooks/useUsersContext";
+import Loader from "../../components/Loader/Loader";
 function Artists() {
   document.title = "Artists";
-  const { users: artists } = useUsersContext();
+  const { users: artists, loading: usersLoading } = useUsersContext();
   if (!artists) {
     return null;
+  }
+  if (usersLoading) {
+    return <Loader />;
   }
   return (
     <div className="artists-container">

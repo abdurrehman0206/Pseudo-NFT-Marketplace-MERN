@@ -1,14 +1,13 @@
 import React, { useLayoutEffect, useState } from "react";
+import Loader from "../../components/Loader/Loader";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNFTContext } from "../../hooks/useNFTContext";
-
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 function Cart() {
   document.title = "My Cart";
-  const [removing, setRemoving] = useState(false);
   const { user, dispatch } = useAuthContext();
-  const { nfts } = useNFTContext();
+  const { nfts, loading: nftsLoading } = useNFTContext();
   const [nftsCart, setNfts] = useState(null);
   const [total, setTotal] = useState(0);
   useLayoutEffect(() => {
@@ -32,7 +31,6 @@ function Cart() {
   }, [user.shoppingCart, nfts]);
   const removeFromCart = async (e, nftId, nftUserId) => {
     try {
-      setRemoving(true);
       e.target.disabled = true;
       e.target.innerHTML = "Removing...";
       const response = await fetch(
@@ -61,7 +59,6 @@ function Cart() {
       console.log(error);
     } finally {
       e.target.disabled = true;
-      setRemoving(false);
     }
   };
   if (total === 0) {
@@ -78,6 +75,9 @@ function Cart() {
         </div>
       </div>
     );
+  }
+  if (nftsLoading) {
+    return <Loader />;
   }
   return (
     <div className="cart-container">

@@ -9,6 +9,7 @@ import Cart from "./pages/Cart/Cart";
 import Collections from "./pages/Collections/Collections";
 import NFT from "./pages/NFT/NFT";
 import Artists from "./pages/Artists/Artists";
+import Loader from "./components/Loader/Loader";
 function App() {
   const { user } = useAuthContext();
   return (
