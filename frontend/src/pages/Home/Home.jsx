@@ -27,7 +27,7 @@ function Home() {
     setLatestNfts(newNfts);
     setLatestUsers(newUsers);
   }, [nfts, users]);
-  if (nftsLoading || usersLoading) {
+  if (nftsLoading) {
     return <Loader />;
   }
   if (!nfts || !users) {
