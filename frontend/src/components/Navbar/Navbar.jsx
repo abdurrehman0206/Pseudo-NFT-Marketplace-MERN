@@ -2,7 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
 import { BsCartCheck } from "react-icons/bs";
+import { useNFTContext } from "../../hooks/useNFTContext";
 function Navbar() {
+  const { nfts, loading: nftsLoading } = useNFTContext();
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
@@ -15,30 +17,32 @@ function Navbar() {
             <span className="c-ac2">i</span>o
           </h1>
         </div>
+        {(!nftsLoading || nfts) ? (
+          <div className="nav-actions">
+            {!user ? (
+              <NavLink to="/login" className="btn-primary">
+                Login
+              </NavLink>
+            ) : (
+              <>
+                <div className="nav-user-info">
+                  <img src={user.image} alt="User" />
+                  <p className="c-ac2">{user.username}</p>
+                  <span>
+                    <NavLink to="/cart">
+                      <BsCartCheck className="user-cart" />
+                    </NavLink>
+                    {user?.shoppingCart?.length}
+                  </span>
+                </div>
+                <button onClick={() => logout()} className="btn-outline">
+                  Logout
+                </button>
+              </>
+            )}
+          </div>
+        ) : null}
 
-        <div className="nav-actions">
-          {!user ? (
-            <NavLink to="/login" className="btn-primary">
-              Login
-            </NavLink>
-          ) : (
-            <>
-              <div className="nav-user-info">
-                <img src={user.image} alt="User" />
-                <p className="c-ac2">{user.username}</p>
-                <span>
-                  <NavLink to="/cart">
-                    <BsCartCheck className="user-cart" />
-                  </NavLink>
-                  {user?.shoppingCart?.length}
-                </span>
-              </div>
-              <button onClick={() => logout()} className="btn-outline">
-                Logout
-              </button>
-            </>
-          )}
-        </div>
         {user && (
           <div className="nav-links">
             <NavLink to="/">Home</NavLink>
